@@ -40,7 +40,7 @@ const reasons = [
 export default function WhyMoonPay() {
   return (
     <section className="section-padding relative overflow-hidden">
-      <div className="aurora aurora-white top-[20%] right-[5%] w-[300px] md:w-[500px] h-[200px] md:h-[350px]" />
+      <div className="aurora aurora-white top-[20%] right-[5%] w-[120px] md:w-[300px] h-[80px] md:h-[200px] opacity-[0.02] md:opacity-[0.04]" />
 
       <div className="max-w-[1400px] mx-auto relative z-10 px-5 md:px-0">
         {/* Header */}

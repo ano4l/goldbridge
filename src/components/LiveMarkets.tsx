@@ -81,7 +81,7 @@ export default function LiveMarkets() {
   return (
     <section id="markets" className="section-padding relative overflow-hidden">
       {/* Aurora */}
-      <div className="aurora aurora-gold top-[30%] right-[10%] w-[400px] md:w-[700px] h-[300px] md:h-[500px]" />
+      <div className="aurora aurora-gold top-[30%] right-[10%] w-[150px] md:w-[400px] h-[120px] md:h-[300px] opacity-[0.05] md:opacity-[0.1]" />
 
       <div className="max-w-[1400px] mx-auto relative z-10 px-5 md:px-0">
         <AnimateOnScroll scale blur>

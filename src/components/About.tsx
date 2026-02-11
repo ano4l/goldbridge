@@ -6,7 +6,7 @@ import CounterNumber from "./CounterNumber";
 export default function About() {
   return (
     <section id="invest" className="section-padding relative">
-      <div className="aurora aurora-gold top-[20%] left-[5%] w-[350px] md:w-[600px] h-[250px] md:h-[400px]" />
+      <div className="aurora aurora-gold top-[20%] left-[5%] w-[150px] md:w-[350px] h-[120px] md:h-[250px] opacity-[0.05] md:opacity-[0.1]" />
 
       <div className="max-w-[1400px] mx-auto relative z-10 px-5 md:px-0">
         {/* Section Header */}

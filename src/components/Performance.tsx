@@ -46,7 +46,7 @@ const features = [
 export default function Performance() {
   return (
     <section id="features" className="section-padding relative">
-      <div className="aurora aurora-gold top-[40%] right-[5%] w-[300px] md:w-[500px] h-[250px] md:h-[400px]" />
+      <div className="aurora aurora-gold top-[40%] right-[5%] w-[120px] md:w-[300px] h-[100px] md:h-[250px] opacity-[0.05] md:opacity-[0.1]" />
 
       <div className="max-w-[1400px] mx-auto relative z-10 px-5 md:px-0">
         {/* Section Header */}

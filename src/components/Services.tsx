@@ -16,7 +16,7 @@ const tags = [
 export default function Services() {
   return (
     <section id="assets" className="section-padding relative overflow-hidden">
-      <div className="aurora aurora-white top-[30%] right-[10%] w-[300px] md:w-[500px] h-[250px] md:h-[400px]" />
+      <div className="aurora aurora-white top-[30%] right-[10%] w-[120px] md:w-[300px] h-[100px] md:h-[250px] opacity-[0.02] md:opacity-[0.04]" />
 
       <div className="max-w-[1400px] mx-auto relative z-10 px-5 md:px-0">
         {/* Section Header */}

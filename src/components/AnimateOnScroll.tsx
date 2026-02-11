@@ -58,11 +58,12 @@ export default function AnimateOnScroll({
     x: 0,
   };
 
-  if (scale) {
+  // Disable heavy effects on mobile for performance
+  if (scale && !isMobile) {
     initial.scale = 0.92;
     visible.scale = 1;
   }
-  if (blur) {
+  if (blur && !isMobile) {
     initial.filter = "blur(8px)";
     visible.filter = "blur(0px)";
   }

@@ -16,9 +16,9 @@ export default function Hero() {
     offset: ["start start", "end start"],
   });
 
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, -50]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [0, 80]);
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -40]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, -20]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [0, 30]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
   const heroScale = useTransform(scrollYProgress, [0, 0.7], [1, 0.95]);
   const headlineY = useTransform(scrollYProgress, [0, 0.5], [0, -30]);
@@ -29,11 +29,11 @@ export default function Hero() {
       {/* Background Effects */}
       <div className="absolute inset-0 grid-bg" />
       <motion.div
-        className="aurora aurora-gold top-[5%] left-[15%] w-[600px] md:w-[900px] h-[400px] md:h-[600px]"
+        className="aurora aurora-gold top-[5%] left-[15%] w-[200px] md:w-[600px] h-[150px] md:h-[400px] opacity-[0.05] md:opacity-[0.1]"
         style={{ y: y3 }}
       />
       <motion.div
-        className="aurora aurora-white top-[20%] right-[10%] w-[300px] md:w-[500px] h-[250px] md:h-[400px] opacity-[0.04]"
+        className="aurora aurora-white top-[20%] right-[10%] w-[150px] md:w-[300px] h-[120px] md:h-[250px] opacity-[0.02] md:opacity-[0.04]"
         style={{ y: y2 }}
       />
 
