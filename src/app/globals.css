@@ -389,6 +389,7 @@
       opacity: 0.01;
     }
   }
+}
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
