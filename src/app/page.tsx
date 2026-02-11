@@ -1,0 +1,39 @@
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import LiveMarkets from "@/components/LiveMarkets";
+import About from "@/components/About";
+import Services from "@/components/Services";
+import GetStartedSteps from "@/components/GetStartedSteps";
+import WhyMoonPay from "@/components/WhyMoonPay";
+import Performance from "@/components/Performance";
+import InvestmentCalculator from "@/components/InvestmentCalculator";
+import Plans from "@/components/Plans";
+import CTA from "@/components/CTA";
+import Footer from "@/components/Footer";
+import PageLoader from "@/components/PageLoader";
+import CursorGlow from "@/components/CursorGlow";
+import ScrollProgress from "@/components/ScrollProgress";
+
+export default function Home() {
+  return (
+    <>
+      <PageLoader />
+      <CursorGlow />
+      <ScrollProgress />
+      <main className="relative noise-overlay">
+        <Navbar />
+        <Hero />
+        <LiveMarkets />
+        <About />
+        <Services />
+        <GetStartedSteps />
+        <WhyMoonPay />
+        <Performance />
+        <InvestmentCalculator />
+        <Plans />
+        <CTA />
+        <Footer />
+      </main>
+    </>
+  );
+}
