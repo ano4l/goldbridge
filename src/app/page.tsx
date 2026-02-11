@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import LiveMarkets from "@/components/LiveMarkets";
 import About from "@/components/About";
+import Ecommerce from "@/components/Ecommerce";
 import Services from "@/components/Services";
 import GetStartedSteps from "@/components/GetStartedSteps";
 import WhyMoonPay from "@/components/WhyMoonPay";
@@ -25,6 +26,7 @@ export default function Home() {
         <Hero />
         <LiveMarkets />
         <About />
+        <Ecommerce />
         <Services />
         <GetStartedSteps />
         <WhyMoonPay />
