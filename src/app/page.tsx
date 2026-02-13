@@ -14,6 +14,7 @@ import Footer from "@/components/Footer";
 import PageLoader from "@/components/PageLoader";
 import CursorGlow from "@/components/CursorGlow";
 import ScrollProgress from "@/components/ScrollProgress";
+import AuthModal from "@/components/AuthModal";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
       <PageLoader />
       <CursorGlow />
       <ScrollProgress />
+      <AuthModal />
       <main className="relative noise-overlay">
         <Navbar />
         <Hero />

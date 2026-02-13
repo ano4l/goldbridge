@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { Menu, X, Shield } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { Menu, X, Shield, LogOut, LayoutDashboard, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useAuth } from "@/context/AuthContext";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -15,12 +16,31 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const { user, setShowAuthModal, logout } = useAuth();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
+  const handleLogout = () => {
+    logout();
+    setDropdownOpen(false);
+    window.location.href = "/";
+  };
 
   return (
     <nav
@@ -32,7 +52,7 @@ export default function Navbar() {
     >
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 h-[72px] flex items-center justify-between">
         {/* Logo */}
-        <a href="#home" className="flex items-center gap-3 group">
+        <a href="/" className="flex items-center gap-3 group">
           <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#D4AF37] via-[#C9A84C] to-[#B8942E] flex items-center justify-center shadow-lg shadow-[#D4AF37]/10 group-hover:shadow-[#D4AF37]/20 transition-shadow duration-500">
             <span className="text-[#060608] font-bold text-sm">G</span>
           </div>
@@ -65,9 +85,74 @@ export default function Navbar() {
             <Shield size={10} className="text-[#D4AF37]/60" />
             <span>Protected</span>
           </div>
-          <a href="#pricing" className="btn-gold text-[11px] font-semibold px-5 py-2 tracking-wide">
-            Start Investing
-          </a>
+
+          {user ? (
+            <div className="relative" ref={dropdownRef}>
+              <button
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+                className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/[0.06] bg-white/[0.03] hover:bg-white/[0.06] transition-all duration-300"
+              >
+                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-[#D4AF37] to-[#B8942E] flex items-center justify-center">
+                  <span className="text-[#060608] text-[10px] font-bold uppercase">
+                    {user.name.charAt(0)}
+                  </span>
+                </div>
+                <span className="text-white text-[11px] font-medium max-w-[80px] truncate">
+                  {user.name}
+                </span>
+                <ChevronDown size={12} className={`text-[#555] transition-transform duration-200 ${dropdownOpen ? "rotate-180" : ""}`} />
+              </button>
+
+              <AnimatePresence>
+                {dropdownOpen && (
+                  <motion.div
+                    className="absolute right-0 top-full mt-2 w-48 bg-[#0c0c10] border border-white/[0.06] rounded-xl shadow-2xl shadow-black/50 overflow-hidden"
+                    initial={{ opacity: 0, y: -8, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -8, scale: 0.95 }}
+                    transition={{ duration: 0.15 }}
+                  >
+                    <div className="p-3 border-b border-white/[0.04]">
+                      <p className="text-white text-xs font-medium truncate">{user.name}</p>
+                      <p className="text-[#444] text-[10px] truncate">{user.email}</p>
+                    </div>
+                    <div className="p-1.5">
+                      <a
+                        href="/dashboard"
+                        className="flex items-center gap-2.5 px-3 py-2 text-[#888] hover:text-white hover:bg-white/[0.04] rounded-lg transition-all text-xs"
+                        onClick={() => setDropdownOpen(false)}
+                      >
+                        <LayoutDashboard size={13} />
+                        Dashboard
+                      </a>
+                      <button
+                        onClick={handleLogout}
+                        className="flex items-center gap-2.5 px-3 py-2 text-[#888] hover:text-red-400 hover:bg-red-500/[0.04] rounded-lg transition-all text-xs w-full text-left"
+                      >
+                        <LogOut size={13} />
+                        Sign Out
+                      </button>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          ) : (
+            <>
+              <button
+                onClick={() => setShowAuthModal(true)}
+                className="text-[#777] hover:text-white text-[11px] font-medium transition-colors duration-300 px-3 py-1.5"
+              >
+                Sign In
+              </button>
+              <button
+                onClick={() => setShowAuthModal(true)}
+                className="btn-gold text-[11px] font-semibold px-5 py-2 tracking-wide"
+              >
+                Get Started
+              </button>
+            </>
+          )}
         </div>
 
         {/* Mobile Toggle */}
@@ -104,15 +189,53 @@ export default function Navbar() {
                 </motion.a>
               ))}
               <div className="divider-gold my-3" />
-              <motion.a
-                href="#pricing"
-                className="btn-gold text-xs mt-2 text-center"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.25, duration: 0.3 }}
-              >
-                Start Investing
-              </motion.a>
+
+              {user ? (
+                <>
+                  <motion.a
+                    href="/dashboard"
+                    className="flex items-center gap-2 text-[#D4AF37] py-3 text-sm font-medium"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2, duration: 0.3 }}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    <LayoutDashboard size={15} />
+                    Dashboard
+                  </motion.a>
+                  <motion.button
+                    onClick={() => { handleLogout(); setMobileOpen(false); }}
+                    className="flex items-center gap-2 text-[#555] hover:text-red-400 py-3 text-sm font-medium transition-colors text-left"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.25, duration: 0.3 }}
+                  >
+                    <LogOut size={15} />
+                    Sign Out
+                  </motion.button>
+                </>
+              ) : (
+                <>
+                  <motion.button
+                    onClick={() => { setShowAuthModal(true); setMobileOpen(false); }}
+                    className="text-[#777] hover:text-white py-3 text-sm font-medium text-left"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2, duration: 0.3 }}
+                  >
+                    Sign In
+                  </motion.button>
+                  <motion.button
+                    onClick={() => { setShowAuthModal(true); setMobileOpen(false); }}
+                    className="btn-gold text-xs mt-2 text-center"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.25, duration: 0.3 }}
+                  >
+                    Get Started
+                  </motion.button>
+                </>
+              )}
             </div>
           </motion.div>
         )}
