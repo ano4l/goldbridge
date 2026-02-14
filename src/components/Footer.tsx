@@ -32,19 +32,19 @@ export default function Footer() {
           </div>
 
           {/* Links */}
-          <div className="flex items-center gap-4 md:gap-6 flex-wrap justify-center">
-            <a href="#home" className="text-[#444] text-[11px] hover:text-[#D4AF37] transition-colors">Home</a>
-            <a href="#markets" className="text-[#444] text-[11px] hover:text-[#D4AF37] transition-colors">Markets</a>
-            <a href="#pricing" className="text-[#444] text-[11px] hover:text-[#D4AF37] transition-colors">Pricing</a>
-            <a href="#" className="text-[#444] text-[11px] hover:text-[#D4AF37] transition-colors">Privacy</a>
-            <a href="#" className="text-[#444] text-[11px] hover:text-[#D4AF37] transition-colors">Terms</a>
+          <div className="flex items-center gap-5 md:gap-6 flex-wrap justify-center">
+            <a href="#home" className="text-[#444] text-xs sm:text-[11px] hover:text-[#D4AF37] active:text-[#D4AF37] transition-colors py-1">Home</a>
+            <a href="#markets" className="text-[#444] text-xs sm:text-[11px] hover:text-[#D4AF37] active:text-[#D4AF37] transition-colors py-1">Markets</a>
+            <a href="#pricing" className="text-[#444] text-xs sm:text-[11px] hover:text-[#D4AF37] active:text-[#D4AF37] transition-colors py-1">Pricing</a>
+            <a href="#" className="text-[#444] text-xs sm:text-[11px] hover:text-[#D4AF37] active:text-[#D4AF37] transition-colors py-1">Privacy</a>
+            <a href="#" className="text-[#444] text-xs sm:text-[11px] hover:text-[#D4AF37] active:text-[#D4AF37] transition-colors py-1">Terms</a>
           </div>
 
           {/* Social */}
           <div className="flex items-center gap-3">
             <a
               href="#"
-              className="w-8 h-8 rounded-full bg-white/[0.02] border border-white/[0.04] flex items-center justify-center hover:border-[#D4AF37]/15 transition-all duration-300"
+              className="w-10 h-10 sm:w-8 sm:h-8 rounded-full bg-white/[0.02] border border-white/[0.04] flex items-center justify-center hover:border-[#D4AF37]/15 active:border-[#D4AF37]/15 transition-all duration-300"
             >
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-[#444]">
                 <path d="M4 4l11.733 16h4.267l-11.733 -16h-4.267z" />
@@ -53,7 +53,7 @@ export default function Footer() {
             </a>
             <a
               href="#"
-              className="w-8 h-8 rounded-full bg-white/[0.02] border border-white/[0.04] flex items-center justify-center hover:border-[#D4AF37]/15 transition-all duration-300"
+              className="w-10 h-10 sm:w-8 sm:h-8 rounded-full bg-white/[0.02] border border-white/[0.04] flex items-center justify-center hover:border-[#D4AF37]/15 active:border-[#D4AF37]/15 transition-all duration-300"
             >
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-[#444]">
                 <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
@@ -67,7 +67,7 @@ export default function Footer() {
         </div>
         </AnimateOnScroll>
 
-        <div className="mt-6 md:mt-8 text-center">
+        <div className="mt-6 md:mt-8 text-center" style={{ paddingBottom: 'max(1rem, env(safe-area-inset-bottom))' }}>
           <p className="text-[#222] text-[10px] tracking-wider">
             © {new Date().getFullYear()} Goldbridge Capital. All rights reserved.
           </p>

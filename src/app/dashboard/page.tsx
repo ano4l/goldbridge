@@ -285,7 +285,7 @@ export default function DashboardPage() {
           >
             <div className="absolute inset-0 bg-black/40" onClick={() => setShowNotifications(false)} />
             <motion.div
-              className="absolute right-0 md:right-[calc(50%-400px)] top-0 md:top-20 w-full md:w-[380px] max-h-screen md:max-h-[500px] bg-[#0a0a0e] md:border border-white/[0.06] md:rounded-xl shadow-2xl overflow-hidden flex flex-col"
+              className="absolute right-0 md:right-[calc(50%-400px)] top-0 md:top-20 w-full md:w-[380px] h-full md:h-auto max-h-screen md:max-h-[500px] bg-[#0a0a0e] md:border border-white/[0.06] md:rounded-xl shadow-2xl overflow-hidden flex flex-col"
               initial={{ x: 20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: 20, opacity: 0 }}
@@ -326,11 +326,11 @@ export default function DashboardPage() {
       </AnimatePresence>
 
       {/* Support Chat Widget */}
-      <div className="fixed bottom-6 right-6 z-50">
+      <div className="fixed bottom-[calc(1.5rem+env(safe-area-inset-bottom,0px))] md:bottom-6 right-4 md:right-6 z-50">
         <AnimatePresence>
           {showSupport && (
             <motion.div
-              className="absolute bottom-14 right-0 w-[320px] bg-[#0a0a0e] border border-white/[0.06] rounded-xl shadow-2xl overflow-hidden"
+              className="absolute bottom-14 right-0 w-[calc(100vw-2rem)] sm:w-[320px] bg-[#0a0a0e] border border-white/[0.06] rounded-xl shadow-2xl overflow-hidden"
               initial={{ opacity: 0, y: 10, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 10, scale: 0.95 }}
@@ -355,9 +355,9 @@ export default function DashboardPage() {
                   <input
                     type="text"
                     placeholder="Type your message..."
-                    className="flex-1 bg-white/[0.03] border border-white/[0.06] rounded-lg px-3 py-2 text-xs text-white placeholder:text-[#333] focus:outline-none focus:border-[#D4AF37]/30"
+                    className="flex-1 bg-white/[0.03] border border-white/[0.06] rounded-lg px-3 py-2 text-[16px] sm:text-xs text-white placeholder:text-[#333] focus:outline-none focus:border-[#D4AF37]/30"
                   />
-                  <button className="w-8 h-8 rounded-lg bg-[#D4AF37]/10 flex items-center justify-center hover:bg-[#D4AF37]/20 transition-colors">
+                  <button className="w-10 h-10 sm:w-8 sm:h-8 rounded-lg bg-[#D4AF37]/10 flex items-center justify-center hover:bg-[#D4AF37]/20 transition-colors flex-shrink-0">
                     <ArrowRight size={12} className="text-[#D4AF37]" />
                   </button>
                 </div>
@@ -798,7 +798,7 @@ export default function DashboardPage() {
                     <input
                       type="text"
                       defaultValue={user.name}
-                      className="w-full bg-white/[0.03] border border-white/[0.06] rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#D4AF37]/30 transition-colors"
+                      className="w-full bg-white/[0.03] border border-white/[0.06] rounded-xl px-4 py-2.5 text-[16px] sm:text-sm text-white focus:outline-none focus:border-[#D4AF37]/30 transition-colors"
                     />
                   </div>
                   <div>
@@ -806,7 +806,7 @@ export default function DashboardPage() {
                     <input
                       type="email"
                       defaultValue={user.email}
-                      className="w-full bg-white/[0.03] border border-white/[0.06] rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#D4AF37]/30 transition-colors"
+                      className="w-full bg-white/[0.03] border border-white/[0.06] rounded-xl px-4 py-2.5 text-[16px] sm:text-sm text-white focus:outline-none focus:border-[#D4AF37]/30 transition-colors"
                     />
                   </div>
                   <div>
@@ -814,7 +814,7 @@ export default function DashboardPage() {
                     <input
                       type="tel"
                       placeholder="+27 XX XXX XXXX"
-                      className="w-full bg-white/[0.03] border border-white/[0.06] rounded-xl px-4 py-2.5 text-sm text-white placeholder:text-[#333] focus:outline-none focus:border-[#D4AF37]/30 transition-colors"
+                      className="w-full bg-white/[0.03] border border-white/[0.06] rounded-xl px-4 py-2.5 text-[16px] sm:text-sm text-white placeholder:text-[#333] focus:outline-none focus:border-[#D4AF37]/30 transition-colors"
                     />
                   </div>
                   <div>
@@ -822,7 +822,7 @@ export default function DashboardPage() {
                     <input
                       type="text"
                       defaultValue="South Africa"
-                      className="w-full bg-white/[0.03] border border-white/[0.06] rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#D4AF37]/30 transition-colors"
+                      className="w-full bg-white/[0.03] border border-white/[0.06] rounded-xl px-4 py-2.5 text-[16px] sm:text-sm text-white focus:outline-none focus:border-[#D4AF37]/30 transition-colors"
                     />
                   </div>
                 </div>

@@ -30,12 +30,12 @@ export default function CTA() {
               wealth across global markets. Start with as little as R1,000.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
-              <a href="#pricing" className="btn-gold gap-2 px-8 py-3 text-sm">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4 sm:px-0">
+              <a href="#pricing" className="btn-gold gap-2 px-8 py-3.5 sm:py-3 text-sm w-full sm:w-auto justify-center">
                 Start Investing
                 <ArrowUpRight size={14} />
               </a>
-              <a href="#markets" className="btn-outline px-8 py-3 text-sm">
+              <a href="#markets" className="btn-outline px-8 py-3.5 sm:py-3 text-sm w-full sm:w-auto justify-center">
                 Explore Markets
               </a>
             </div>

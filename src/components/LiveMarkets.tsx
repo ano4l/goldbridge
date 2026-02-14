@@ -129,7 +129,7 @@ export default function LiveMarkets() {
                       </div>
 
                       {/* Center - Sparkline */}
-                      <div className="hidden sm:block">
+                      <div className="flex-shrink-0">
                         <Sparkline data={pair.spark} up={pair.up} />
                       </div>
 

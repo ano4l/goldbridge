@@ -79,7 +79,7 @@ export default function AuthModal() {
 
           {/* Modal */}
           <motion.div
-            className="relative w-full max-w-[420px] bg-[#0a0a0e] border border-white/[0.06] rounded-2xl shadow-2xl shadow-black/50 overflow-hidden"
+            className="relative w-full max-w-[420px] max-h-[90vh] sm:max-h-none overflow-y-auto bg-[#0a0a0e] border border-white/[0.06] rounded-2xl sm:rounded-2xl shadow-2xl shadow-black/50 overflow-hidden"
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -96,7 +96,7 @@ export default function AuthModal() {
               <X size={18} />
             </button>
 
-            <div className="p-6 md:p-8">
+            <div className="p-5 sm:p-6 md:p-8">
               {/* Header */}
               <div className="text-center mb-6">
                 <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[#D4AF37] via-[#C9A84C] to-[#B8942E] flex items-center justify-center mx-auto mb-4 shadow-lg shadow-[#D4AF37]/10">
@@ -146,7 +146,8 @@ export default function AuthModal() {
                       placeholder="Full Name"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full bg-white/[0.03] border border-white/[0.06] rounded-xl pl-9 pr-4 py-3 text-sm text-white placeholder:text-[#444] focus:outline-none focus:border-[#D4AF37]/30 transition-colors"
+                      autoComplete="name"
+                      className="w-full bg-white/[0.03] border border-white/[0.06] rounded-xl pl-9 pr-4 py-3 text-[16px] sm:text-sm text-white placeholder:text-[#444] focus:outline-none focus:border-[#D4AF37]/30 transition-colors"
                     />
                   </div>
                 )}
@@ -159,7 +160,9 @@ export default function AuthModal() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="w-full bg-white/[0.03] border border-white/[0.06] rounded-xl pl-9 pr-4 py-3 text-sm text-white placeholder:text-[#444] focus:outline-none focus:border-[#D4AF37]/30 transition-colors"
+                    inputMode="email"
+                    autoComplete="email"
+                    className="w-full bg-white/[0.03] border border-white/[0.06] rounded-xl pl-9 pr-4 py-3 text-[16px] sm:text-sm text-white placeholder:text-[#444] focus:outline-none focus:border-[#D4AF37]/30 transition-colors"
                   />
                 </div>
 
@@ -172,7 +175,8 @@ export default function AuthModal() {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                     minLength={4}
-                    className="w-full bg-white/[0.03] border border-white/[0.06] rounded-xl pl-9 pr-10 py-3 text-sm text-white placeholder:text-[#444] focus:outline-none focus:border-[#D4AF37]/30 transition-colors"
+                    autoComplete={mode === "login" ? "current-password" : "new-password"}
+                    className="w-full bg-white/[0.03] border border-white/[0.06] rounded-xl pl-9 pr-10 py-3 text-[16px] sm:text-sm text-white placeholder:text-[#444] focus:outline-none focus:border-[#D4AF37]/30 transition-colors"
                   />
                   <button
                     type="button"

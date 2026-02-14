@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 interface TiltCardProps {
@@ -14,9 +14,14 @@ export default function TiltCard({ children, className = "" }: TiltCardProps) {
   const [rotateY, setRotateY] = useState(0);
   const [glowX, setGlowX] = useState(50);
   const [glowY, setGlowY] = useState(50);
+  const [isTouch, setIsTouch] = useState(false);
+
+  useEffect(() => {
+    setIsTouch(window.matchMedia("(pointer: coarse)").matches);
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!ref.current) return;
+    if (isTouch || !ref.current) return;
     const rect = ref.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
@@ -35,6 +40,10 @@ export default function TiltCard({ children, className = "" }: TiltCardProps) {
     setGlowX(50);
     setGlowY(50);
   };
+
+  if (isTouch) {
+    return <div className={`relative ${className}`}>{children}</div>;
+  }
 
   return (
     <motion.div

@@ -157,10 +157,11 @@ export default function Navbar() {
 
         {/* Mobile Toggle */}
         <button
-          className="lg:hidden text-white/80"
+          className="lg:hidden text-white/80 w-11 h-11 flex items-center justify-center rounded-xl active:bg-white/[0.04] transition-colors"
           onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label="Toggle menu"
         >
-          {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
@@ -174,13 +175,13 @@ export default function Navbar() {
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="px-6 py-6 flex flex-col gap-1">
+            <div className="px-6 py-5 flex flex-col gap-0.5" style={{ paddingBottom: 'max(1.25rem, env(safe-area-inset-bottom))' }}>
               {navLinks.map((link, i) => (
                 <motion.a
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="text-[#777] hover:text-white transition-colors py-3 text-sm font-medium"
+                  className="text-[#777] hover:text-white active:text-white transition-colors py-3.5 text-[15px] font-medium rounded-xl px-2 active:bg-white/[0.03]"
                   initial={{ opacity: 0, x: -16 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05, duration: 0.3 }}
@@ -194,23 +195,23 @@ export default function Navbar() {
                 <>
                   <motion.a
                     href="/dashboard"
-                    className="flex items-center gap-2 text-[#D4AF37] py-3 text-sm font-medium"
+                    className="flex items-center gap-3 text-[#D4AF37] py-3.5 text-[15px] font-medium rounded-xl px-2 active:bg-[#D4AF37]/[0.06]"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2, duration: 0.3 }}
                     onClick={() => setMobileOpen(false)}
                   >
-                    <LayoutDashboard size={15} />
+                    <LayoutDashboard size={17} />
                     Dashboard
                   </motion.a>
                   <motion.button
                     onClick={() => { handleLogout(); setMobileOpen(false); }}
-                    className="flex items-center gap-2 text-[#555] hover:text-red-400 py-3 text-sm font-medium transition-colors text-left"
+                    className="flex items-center gap-3 text-[#555] hover:text-red-400 active:text-red-400 py-3.5 text-[15px] font-medium transition-colors text-left rounded-xl px-2 active:bg-red-500/[0.04]"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.25, duration: 0.3 }}
                   >
-                    <LogOut size={15} />
+                    <LogOut size={17} />
                     Sign Out
                   </motion.button>
                 </>
@@ -218,7 +219,7 @@ export default function Navbar() {
                 <>
                   <motion.button
                     onClick={() => { setShowAuthModal(true); setMobileOpen(false); }}
-                    className="text-[#777] hover:text-white py-3 text-sm font-medium text-left"
+                    className="text-[#777] hover:text-white active:text-white py-3.5 text-[15px] font-medium text-left rounded-xl px-2 active:bg-white/[0.03]"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2, duration: 0.3 }}
@@ -227,7 +228,7 @@ export default function Navbar() {
                   </motion.button>
                   <motion.button
                     onClick={() => { setShowAuthModal(true); setMobileOpen(false); }}
-                    className="btn-gold text-xs mt-2 text-center"
+                    className="btn-gold text-sm mt-3 text-center py-3.5"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.25, duration: 0.3 }}

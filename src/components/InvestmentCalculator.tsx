@@ -97,7 +97,8 @@ export default function InvestmentCalculator() {
                     onChange={(e) => setAmount(Number(e.target.value))}
                     min={tier.min}
                     max={tier.max}
-                    className="w-full bg-white/[0.03] border border-white/[0.06] rounded-xl pl-9 pr-4 py-3.5 text-white text-lg font-bold font-display outline-none focus:border-[#D4AF37]/30 transition-colors tabular-nums"
+                    inputMode="numeric"
+                    className="w-full bg-white/[0.03] border border-white/[0.06] rounded-xl pl-9 pr-4 py-3.5 text-white text-[16px] sm:text-lg font-bold font-display outline-none focus:border-[#D4AF37]/30 transition-colors tabular-nums"
                   />
                 </div>
                 <input
@@ -146,7 +147,7 @@ export default function InvestmentCalculator() {
                 <label className="text-[#555] text-[10px] uppercase tracking-[0.2em] mb-3 block">
                   Time Period
                 </label>
-                <div className="grid grid-cols-4 gap-2">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                   {durations.map((d, i) => (
                     <button
                       key={d.label}
